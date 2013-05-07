@@ -1,0 +1,38 @@
+<header class = "navbar navbar-fixed-top" >
+	<div class = "navbar-inner">
+		<div class = "container">
+			<%= link_to "CustomerBase", root_path, id: "logo" %>
+			<nav>
+			<ul class = "nav pull-right">
+				<li > <%= link_to "Home", root_path %> </li>
+				<li class="divider-vertical"></li>
+				<li > <%= link_to "About", about_path %> </li>
+				<li class="divider-vertical"></li>
+				<li > <%= link_to "Contacts", contacts_path %> </li>
+				<li class="divider-vertical"></li>
+			
+				<li>
+			
+	  				<button class="btn dropdown-toggle" data-toggle="dropdown"> 
+	  					Profile
+	    				<span class="caret"></span>
+	  				</button>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+						<li><%= link_to "Customers", "#"%></li>
+						<li><%= link_to "Find Customer", "#"%></li>
+						<li><%= link_to "My messages", "#"%></li>
+						<li class="divider"></li>
+						<li><%= link_to "sign out", "#"%></li>
+					</ul>
+		
+				</li>
+			</ul>
+						
+			</nav>
+		</div>
+	</div>
+</header>
+
+
+
+
