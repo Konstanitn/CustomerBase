@@ -1,0 +1,9 @@
+<% provide(:title, 'New User') %>
+	<div class = "form">
+	<h1> Create new user </h1>
+	<%= form_for(@user) do |f| %>
+		<%= render 'fields', f:f %>
+		<%= f.submit 'Create user', class: 'btn' %>
+	<% end %>
+</div>
+

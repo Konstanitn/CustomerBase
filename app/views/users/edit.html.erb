@@ -1,0 +1,8 @@
+<% provide(:title, 'Edit User') %>
+	<div class = "form">
+	<h1> Edit user </h1>
+	<%= form_for(@user) do |f| %>
+		<%= render 'fields', f:f %>
+		<%= f.submit 'Edit user', class: 'btn' %>
+	<% end %>
+</div>

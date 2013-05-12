@@ -1,8 +1,24 @@
 CustomersBase::Application.routes.draw do
+  resources :users
+  resources :sessions, only: [:new, :create, :destroy]
+  resources :customers
+  resources :messages, only: [:new, :create, :destroy]
+
   root to: 'static_pages#home'
-  
+
+  match '/newcustomer', to: 'customers#new'
+  match '/show_customer', to: 'customers#show'
+ 
+
+  match '/signout', to: 'sessions#destroy'
+  match '/signin', to: 'sessions#new'
+
+  match '/signup', to: 'users#new'
+
   match '/contacts', to: 'static_pages#contacts'
   match '/about', to: 'static_pages#about'
+
+  match '/newmessage', to: 'messages#new'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

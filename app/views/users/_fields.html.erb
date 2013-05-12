@@ -1,0 +1,18 @@
+<%= render "shared/error_mesages", object: f.object %>
+
+<%= f.label "First name" %>
+<%= f.text_field :first_name %>
+
+<%= f.label "Last name" %>
+<%= f.text_field :last_name %>
+
+<%= f.label "Password" %>
+<%= f.password_field :password %>
+
+<%= f.label "Confirm password" %>
+<%= f.password_field :password_confirmation %>
+<br/>
+<%= f.check_box :admin %>
+<%= f.label  "Admin?", :class => "checkbox inline" %>
+<br/>
+<br/>

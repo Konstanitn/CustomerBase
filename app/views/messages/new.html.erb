@@ -1,0 +1,10 @@
+<% provide(:title, 'New Message') %>
+<div class = "form">
+	<h1> New message for <%= "#{@user.first_name} #{@user.last_name}" %> </h1>
+	<%= form_for(@message) do |f| %>
+		<%= f.text_area :content, placeholder: "Print your message ..." %>
+		<%= f.hidden_field :user_id, :value => @user.id %>
+		<%= f.submit 'Send message', class: 'btn' %>
+	<% end %>
+	
+</div>

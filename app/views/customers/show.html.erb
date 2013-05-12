@@ -1,0 +1,51 @@
+<% provide(:title, "Customer's profile") %>
+	<h1> <%= "#{@customer.first_name} #{@customer.last_name}'s profile"  %> </h1> 
+	<table>
+		<tr>
+	    	<td> First name </td>
+	    	<td> <%= @customer.first_name %> </td> 
+	    </tr> 
+	    <tr>
+	    	<td> Last name </td>
+	    	<td> <%= @customer.last_name %> </td>
+	    </tr> 
+	     <tr>
+	    	<td> Middle name </td>
+	    	<td> <%= @customer.middle_name %> </td> 
+	    </tr> 
+		<tr>
+	    	<td> Phone number </td>
+	    	<td> <%= @customer.phone_number %> </td> 
+	    </tr> 
+	    <tr>
+	    	<td> Address </td>
+	    	<td> <%= @customer.address %> </td> 
+	    </tr> 
+	<tr> 
+	</table>
+	<br />
+	<table>
+		<td> Information: </td>
+		<td> <%= @customer.info %> </td>
+	</tr>
+	</table>
+	<br />
+	<table>	
+	<tr> <td align="left"> 
+			<% if @customer.created_at == @customer.updated_at  %>
+				 Profile created and updated : <%= time_ago_in_words(@customer.created_at) %>  ago  by <%="#{@updated_user.first_name} #{@updated_user.last_name}" %> 
+			<% else %>
+		 		Profile updated <%= time_ago_in_words(@customer.updated_at) %> ago by <%="#{@updated_user.first_name} #{@updated_user.last_name}" %>
+		 	<% end %>
+	 	</td> 
+	</tr>
+	<tr> 
+		<td align="center">
+		<%= link_to 'Edit profile', edit_customer_path(@customer), class: 'btn' %> 
+		<%= link_to 'Delete profile', @customer, method: :delete, class: 'btn' %>
+		</td>
+	</tr>
+	</table>
+			
+			
+			
