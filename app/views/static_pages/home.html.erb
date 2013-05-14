@@ -1,2 +1,12 @@
 <h1>Home of application "CustomerBase"</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<p>Параметры входа в приложение: <br />
+Admin: <br />
+Login: Base <br />
+password: customer
+</p> <hr />
+<p>
+Manager: <br />
+Login: <%= User.find(2).last_name %> <br />
+password: password </p>
+<hr />
+<p> Между представленными двумя пользователям налажена переписка так что Вы можете просмотреть их сообщения.</p>

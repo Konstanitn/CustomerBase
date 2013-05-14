@@ -6,8 +6,10 @@
 	    	<td> First name </td> 
 			<td> Last name </td> 
 			<td> Admin? </td>
+			<% if current_user.admin? %>
 			<td> Edit link </td>
 			<td> Delete link </td>
+			<% end %>
 			<td> Message link </td>
 		</tr> 
 		<% @users.each do |user| %>
@@ -16,8 +18,10 @@
 			<td> <%= user.first_name %> </td> 
 			<td> <%= user.last_name %> </td> 
 			<td> <%= user.admin %> </td> 
-			<td> <%= link_to 'Edit', edit_user_path(user) if user.last_name != 'Base' && current_user.admin?  %> </td>
-			<td> <%= link_to 'Delete', user, method: :delete if user.last_name != 'Base' && current_user.admin?  %> </td>
+			<% if current_user.admin? %>
+			<td> <%= link_to 'Edit', edit_user_path(user) if user.last_name != 'Base' %> </td>
+			<td> <%= link_to 'Delete', user, method: :delete if user.last_name != 'Base' %> </td>
+			<% end %>
 			<td> <%= link_to 'Send message', newmessage_path(:id => user) %> </td>
 		<% end %>
 		</tr>

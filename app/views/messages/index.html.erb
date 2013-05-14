@@ -1,0 +1,24 @@
+<% provide(:title, " #{current_user.first_name} #{current_user.last_name}'s messages") %>
+	<h1> <%= "Your messages" %> </h1>
+	<% if current_user.messages.any? %> <!-- Еслиу  пользователя есть сообщения -->
+	<%= will_paginate %>
+	<% @messages.each do |message| %>
+	<% user = User.find_by_last_name(message.who_sent) %> <!-- Находим пользователя которы й отправил сообщение -->
+	<div>
+		<span class="recieved_message"> Message received from <%= "'#{user.first_name} #{user.last_name}''#{time_ago_in_words(message.created_at)} ago" %></span>
+	    	<br /><br />
+			<p><%= message.content %> </p> 
+	</dev>	
+	<table>
+		<tr>
+			<td> <%= link_to "Answer", newmessage_path(:id => user, :content => message.content), class: 'btn'%> <!-- Ссылка для отправки ответа -->
+				 <%= link_to "Delete", message, method: :delete , class: 'btn' %> <!-- Ссылка на удаление сообщения -->
+			</td>
+		</tr>
+	</table>
+	<hr />
+	<% end %>	
+	<%= will_paginate %>
+	<% else %>
+	<p> There is no messages for you </p> <!-- Если сообщений нет выодим оповещение -->
+	<% end %>

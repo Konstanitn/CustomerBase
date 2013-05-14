@@ -53,6 +53,8 @@ textarea {
 /* блоки div */
 
 .general {
+ .badge-important {padding-left: 20px;}
+ .badge {padding-left: 20px;}
   p {padding-left: 20px;}
   h1 {text-align: center}
 
@@ -82,7 +84,8 @@ textarea {
             margin-bottom: 20px;}
       input {margin-left: 20%}
       .inline { margin-left: 0px}
-      } 
+      }
+  .recieved_message { background: #FFFACD}      
   }
 
 

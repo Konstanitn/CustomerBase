@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-  before_filter :signed_user
+    before_filter :signed_user
 
   def new
     @customer = Customer.new
@@ -37,7 +37,7 @@ class CustomersController < ApplicationController
   end
 
   def index
-    @customers = Customer.paginate(page: params[:page])
+    @customers = Customer.paginate(page: params[:page], per_page: 10)
   end
 
   def destroy

@@ -12,19 +12,28 @@
 		<div class = "info">
 			<% if !signed_in? %>
 				<p>You are not signed in!</p>
+				<div align = "left"><p>Параметры для входа в приложение: <br /><hr />
+					Admin: <br />
+					Login: Base <br />
+					password: customer
+					</p> <hr />
+					<p>
+					Manager: <br />
+					Login: <%= User.find(2).last_name %> <br />
+					password: password </p> 
+				</div>
 				<%= link_to "Sign in", signin_path, class: "btn" %>
-			<% elsif signed_in? && current_user.admin? %>
+			<% elsif signed_in? %>
 				<p> Yo are signed:<p>
 				<%= "#{current_user.first_name} #{current_user.last_name}" %>
 				<hr />
-				You are: Admin
+				You are: <% if current_user.admin? %> Admin <% else %> Manager <% end %>
 				<hr />
-				<%= link_to "Sign out", signout_path, class: "btn" %>
-			<% else %>
-				<p> Yo are signed:<p>
-				<%= "#{current_user.first_name} #{current_user.last_name}" %>
-				<hr />
-				You are: Manager
+				<% if current_user.messages.any? %>
+				You have <%= link_to "#{current_user.messages.count} messages" ,mymessages_path %> 
+				<% else %>
+				You have no messages.
+				<% end %>
 				<hr />
 				<%= link_to "Sign out", signout_path, class: "btn" %>
 			<% end %>

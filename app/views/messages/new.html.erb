@@ -1,10 +1,17 @@
 <% provide(:title, 'New Message') %>
 <div class = "form">
+	<% if params[:content].nil? %> <!-- Проверяем это ответ на сообщение или новое сообщение -->
 	<h1> New message for <%= "#{@user.first_name} #{@user.last_name}" %> </h1>
+	<% else %>
+	<h1> Answer for <%= "#{@user.first_name} #{@user.last_name}" %> </h1>
+	<% end %>
 	<%= form_for(@message) do |f| %>
-		<%= f.text_area :content, placeholder: "Print your message ..." %>
-		<%= f.hidden_field :user_id, :value => @user.id %>
+		<% if params[:content].nil? %>
+		<%= f.text_area :content, rows: 10, placeholder: "Print your message ..." %> <!-- Сообщение новое тогда выводим пустое текстовое поле -->
+		<%else %>
+		<%= f.text_area :content, rows: 10, value: @old_content %> <!-- Ответ на сообщение - выводим текст сообщения на которые отвечаем -->
+		<% end %>
+		<%= f.hidden_field :user_id, :value => @user.id %> <!-- передаем id пользователя кому предназначено сообщение -->
 		<%= f.submit 'Send message', class: 'btn' %>
 	<% end %>
-	
 </div>
