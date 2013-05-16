@@ -9,5 +9,10 @@ FactoryGirl.define  do
 			admin true
 		end
 	end
+
+	factory :message do
+			content "Hello! #{n}"
+			user
+	end
 	
 end

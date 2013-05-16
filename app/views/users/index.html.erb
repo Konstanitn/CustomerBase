@@ -13,7 +13,6 @@
 			<td> Message link </td>
 		</tr> 
 		<% @users.each do |user| %>
-		<% if user.last_name != 'Ziryanov' %>
 		<tr>
 			<td> <%= user.first_name %> </td> 
 			<td> <%= user.last_name %> </td> 
@@ -22,10 +21,8 @@
 			<td> <%= link_to 'Edit', edit_user_path(user) if user.last_name != 'Base' %> </td>
 			<td> <%= link_to 'Delete', user, method: :delete if user.last_name != 'Base' %> </td>
 			<% end %>
-			<td> <%= link_to 'Send message', newmessage_path(:id => user) %> </td>
-		<% end %>
+			<td> <%= link_to 'Send message', newmessage_path(:id => user) %> </td> 
 		</tr>
-		
 		<% end %>
 	</table>
 	<%= will_paginate %>
