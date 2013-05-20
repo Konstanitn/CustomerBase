@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :signed_user, only: [:index]
+  before_filter :signed_in_user, only: [:index] # см. AplicationController
   before_filter :admin_user, only: [:new, :create, :edit, :update, :destroy]
 
   def new
@@ -49,11 +49,6 @@ class UsersController < ApplicationController
   private
 
   def admin_user
-    redirect_to root_path unless signed_in? && current_user.admin?
+     render file: "public/403", status: 403, layout: false unless signed_in? && current_user.admin?
   end
-
-  def signed_user
-    redirect_to root_path unless signed_in?
-  end
-
 end

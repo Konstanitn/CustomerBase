@@ -83,8 +83,8 @@ textarea {
       .btn {margin-left: 20%;
             margin-bottom: 20px;}
       input {margin-left: 20%}
-      .inline { margin-left: 0px}
-      }
+      .inline { margin-left: 0px;
+              form {display: inline;} }      }
   .recieved_message { background: #FFFACD}      
   }
 

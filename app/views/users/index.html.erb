@@ -1,6 +1,8 @@
 <% provide(:title, 'Users') %>
 	<h1> All Users </h1>
+	<div class="pagination pagination-centered">
 	<%= will_paginate %>
+	</div>
 	<table>
 		<tr>
 	    	<td> First name </td> 
@@ -25,6 +27,8 @@
 		</tr>
 		<% end %>
 	</table>
+	<div class="pagination pagination-centered">
 	<%= will_paginate %>
+	</div>
 
 

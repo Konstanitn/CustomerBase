@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_filter :signed_user
+  before_filter :signed_in_user # см. AplicationController
   
   def new
     @user = User.find(params[:id])
@@ -37,11 +37,4 @@ class MessagesController < ApplicationController
       @messages = []
     end
   end
-
-  private
-
-    def signed_user
-      redirect_to root_path unless signed_in?
-    end
-
 end

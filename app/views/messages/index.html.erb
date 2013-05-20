@@ -1,7 +1,9 @@
 <% provide(:title, " #{current_user.first_name} #{current_user.last_name}'s messages") %>
 	<h1> <%= "Your messages" %> </h1>
 	<% if current_user.messages.any? %> <!-- Еслиу  пользователя есть сообщения -->
-	<%= will_paginate %>
+	<div class="pagination pagination-centered">
+		<%= will_paginate %>
+	</div>
 	<% @messages.each do |message| %>
 	<% user = User.find_by_last_name(message.who_sent) %> <!-- Находим пользователя которы й отправил сообщение -->
 	<div>
@@ -18,7 +20,9 @@
 	</table>
 	<hr />
 	<% end %>	
+	<div class="pagination pagination-centered">
 	<%= will_paginate %>
+	</div>
 	<% else %>
 	<p> There is no messages for you </p> <!-- Если сообщений нет выодим оповещение -->
 	<% end %>

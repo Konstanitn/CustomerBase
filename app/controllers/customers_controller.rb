@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-    before_filter :signed_user
+    before_filter :signed_in_user # см. AplicationController
 
   def new
     @customer = Customer.new
@@ -37,6 +37,7 @@ class CustomersController < ApplicationController
   end
 
   def index
+    @find_customer = Customer.new
     @customers = Customer.paginate(page: params[:page], per_page: 10)
   end
 
@@ -47,11 +48,16 @@ class CustomersController < ApplicationController
   end
 
   def find
-  end
-
-  private
-
-  def signed_user
-    redirect_to root_path unless signed_in?
+  
+    @customers = Customer.where("first_name=? OR last_name=? OR middle_name=?", params[:find_customer][:first_name], params[:find_customer][:last_name], params[:find_customer][:middle_name]).paginate(page: params[:page], per_page: 10)
+    if @customers[0].nil?
+      flash[:success] = "Nothing was found"
+      @customers = Customer.paginate(page: params[:page], per_page: 10)
+      @find_customer = Customer.new
+      redirect_to customers_path and return
+    else
+      @find_customer = Customer.new
+      render 'index'
+    end
   end
 end
