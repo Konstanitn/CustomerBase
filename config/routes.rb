@@ -1,7 +1,11 @@
 CustomersBase::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  resources :customers 
+  resources :customers do
+    collection do
+      post 'find'
+    end 
+  end
   resources :messages, only: [:new, :create, :destroy]
 
   root to: 'static_pages#home'
@@ -9,7 +13,7 @@ CustomersBase::Application.routes.draw do
 
   match '/newcustomer', to: 'customers#new'
   match '/show_customer', to: 'customers#show'
-  post 'customers/find'
+  
 
   match '/signout', to: 'sessions#destroy'
   match '/signin', to: 'sessions#new'

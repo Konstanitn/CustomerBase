@@ -1,17 +1,15 @@
 <% provide(:title, 'All Customers') %>
 	<h1> All Customers </h1>
+	
 	<div class="inline">
 
-		<%= form_for :find_customer,:url => url_for(:action => :find, :method => "post") do |f| %>
-			
+		<%= form_for :find_customer, url: find_customers_path do |f| %>
 			<%= f.text_field :first_name, :size => "15", :placeholder=>"First Name" %>
-
 			<%= f.text_field :last_name, :size => "15", :placeholder=>"Last Name" %>
-
 			<%= f.text_field :middle_name, :size => "15", :placeholder=>"Middle Name" %>
 			<%= f.submit "Find", class: "btn" %>
-
 		<% end %>
+
 	</div>
 
 	<% if @customers.any? %>
@@ -41,7 +39,7 @@
 		<% end %>
 	</table>
 	<div class="pagination pagination-centered">
-  	<%= will_paginate @customers%>
+  	<%= will_paginate @customers %>
   	</div>
 	<% else %>
 	<p> There is no customers in base </p>
